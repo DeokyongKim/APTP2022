@@ -11,18 +11,12 @@
 {사용 대상 작성}
 
 ## 4. 목적
-{목적 }
+{목적 작성}
 
 ## 5. 주요기능
-1. 숫자가 적혀있는 상자들이 상하좌우로 움직일 수 있다.
-2. 상자끼리 만날 때 같은 숫자로 이루어진 상자이면 두 상자가 하나로 합쳐지고 숫자가 두 배가 된다. 
-3. 다른 숫자의 상자이면 색이 다르다. 
-4. 상자가 벽을 만나면 움직이지 않는다. 
-5. 다른 숫자의 상자가 만나면 벽처럼 작용해 서로 합쳐지지 않고 막는다.
-6. 16칸이 상자로 다 차고 더 합칠 수 있는 상자가 없을 때 게임이 종료된다.
-7. 칸의 개수를 4x4~8x8개까지 설정할 수 있다.
-8. 점수를 저장하고 최고 점수를 표시할 수 있다.
-9. 서버를 통해 최고 점수를 비교해 랭크를 만들 수 있다.
+1. 주요한 기능
+2. 두번째로 주요한 기능
+3. 등등등
 
 ## 6. 프로젝트 핵심
 1. 각 상자를 객체로 구현하는 것이 중요하다. 이를 통해 상자의 숫자, 움직임 등 겹치는 것이 많은 기능이 class를 통해 구현이 가능할 것으로 보인다
@@ -46,8 +40,6 @@
 <hr>
 
 #### readme 작성관련 참고하기 [바로가기](https://heropy.blog/2017/09/30/markdown/)
-
-#### 예시 계획서 [[예시 1]](https://docs.google.com/document/d/1hcuGhTtmiTUxuBtr3O6ffrSMahKNhEj33woE02V-84U/edit?usp=sharing) | [[예시 2]](https://docs.google.com/document/d/1FmxTZvmrroOW4uZ34Xfyyk9ejrQNx6gtsB6k7zOvHYE/edit?usp=sharing) | [[예시 3]](https://github.com/goldmango328/2018-OOP-Python-Light) | [[예시4]](https://github.com/ssy05468/2018-OOP-Python-lightbulb) | [[모두보기]](https://github.com/kadragon/oop_project_ex/network/members)
 
 
 
