@@ -1,6 +1,6 @@
 # APTP 2022 - **{Snake 101}**
 ###### Asterisk Python Team Project 2022
-구성원: 아스터 | 리스크 | 홍길동 | Change
+구성원: 김지환 | 강범주 | 김상은 | 전현범
 
 ## 1. 주제
 Snake Game. AI를 살짝 곁들인..
