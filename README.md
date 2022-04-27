@@ -16,26 +16,26 @@ Implicant를 찾아준다
 
 ## 5. 주요기능
 1. Prime Implicant 찾아주기
-2. 
-3. 등등등
+2. 입력 갯수 (2, 3, 4, 5)에 따른 Implicant 찾아주기
+3. UI를 통해 이를 그림으로 보여주기
 
 ## 6. 프로젝트 핵심
-1. 첫번째 핵심
-2. 두번째 핵심
-3. 세번째 핵심
+1. 2차원 배열 해석 ( 백준 연구소 )
+2. UI 구현
+3. Essential Prime Implicant 판정
 
 ## 7. 구현에 필요한 라이브러리나 기술
-{pygame, sys, socket, ...}
+pygame
 
 ## 8. **분업 계획**
-홍길동: GUI 구현, board 구현
-아스터: 상자 Class 구현
-리스크: 서버 및 클라이언트 구현
+김덕용: GUI 구현
+김가현: 5개 Implicant 구현
+송준서: 4개 Implicant 구현
+배정윤: 3개 Implicant 구현
+윤석영: 2개 Implicant 구현
 
 ## 9. 기타
 
-1. 기타적인 무엇
-2. 등등 작성
 
 <hr>
 
