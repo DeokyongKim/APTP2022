@@ -1,12 +1,12 @@
-# APTP 2022 - **{팀명}**
+# APTP 2022 - **{snake 101}**
 ###### Asterisk Python Team Project 2022
 구성원: 아스터 | 리스크 | 홍길동 | Change
 
 ## 1. 주제
-{주제 작성}
+Snake Game, but with AI
 
 ## 2. 동기
-{동기 작성}
+AI 공부가 상당히 마렵다
 
 ## 3. 프로그램 사용 대상
 {사용 대상 작성}
