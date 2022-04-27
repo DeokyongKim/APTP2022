@@ -15,9 +15,11 @@ Implicant 탐색 프로그램
 Implicant를 찾아준다
 
 ## 5. 주요기능
-1. Prime Implicant 찾아주기
-2. 입력 갯수 (2, 3, 4, 5)에 따른 Implicant 찾아주기
-3. UI를 통해 이를 그림으로 보여주기
+1. Prime Implicant 찾아줄 수 있다. 
+2. 입력 갯수 (2, 3, 4, 5)에 따른 Implicant 찾아줄 수 있다. 
+3. UI를 통해 이를 그림으로 보여줄 수 있다. 
+4. UI를 통해 입력값을 설정할 수 있다. 
+5. Essential Prime Implicant를 표시할 수 있다. 
 
 ## 6. 프로젝트 핵심
 1. 2차원 배열 해석 ( 백준 연구소 )
