@@ -30,11 +30,11 @@ Implicant를 찾아준다
 pygame
 
 ## 8. **분업 계획**
-김덕용: GUI 구현
-김가현: 5개 Implicant 구현
-송준서: 4개 Implicant 구현
-배정윤: 3개 Implicant 구현
-윤석영: 2개 Implicant 구현
+김덕용: GUI 구현   
+김가현: 5개 Implicant 구현  
+송준서: 4개 Implicant 구현  
+배정윤: 3개 Implicant 구현  
+윤석영: 2개 Implicant 구현. 
 
 ## 9. 기타
 
