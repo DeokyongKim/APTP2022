@@ -28,17 +28,30 @@ key_l = [alphabet, number, command, direction]
 
 
 class Interaction(TABLE.Table):
-    def __init__(self, event, table, table_size):
+    """
+    Responsibility on Interaction with User
+    """
+    def __init__(self, input_event, table, table_size):
         super().__init__(table, table_size)
-        self.event = event
+        self.input_event = input_event
 
-    def MouseClick(self, mouse_position, table_position, table_length, table_size, table_border):
-        for i in table_size[0]:
-            for j in table_size[1]:
+    def MouseClick(self, mouse_position, table_position, table_length, table_border):
+        for i in self.table_size[0]:
+            for j in self.table_size[1]:
                 adjust_position = (table_position[0] + j*table_length - j*table_border,
                                    table_position[1] + i*table_length - i*table_border)
-                if 0 < mouse_position[0] - adjust_position[0] < table_length and 0 < mouse_position[1] - adjust_position[1] < table_length:
+                if 0 < mouse_position[0] - adjust_position[0] < table_length and \
+                        0 < mouse_position[1] - adjust_position[1] < table_length:
                     self.table[i][j] = 1
+
+    def KeyboardPressed(self):
+        for i in key_l:
+            if self.input_event in i:
+                return i[self.input_event]
+
+    def IsEnd(self):
+        if self.input_event.type() == pygame.QUIT:
+            sys.exit()
 
 
 class Screen(TABLE.Table):
@@ -46,12 +59,12 @@ class Screen(TABLE.Table):
     Responsibility on Displaying Screen
     """
 
-    def __init__(self, screen_size, table, table_size):
+    def __init__(self, screen_size: tuple[int, int], table: list[int], table_size: tuple[int, int]):
         """
         Screen Information
-        :param screen_size: tuple
-        :param table: list
-        :param table_size: tuple
+        :param screen_size: tuple[int, int]
+        :param table: list[int]
+        :param table_size: tuple[int, int]
         """
         super().__init__(table, table_size)
         pygame.init()
@@ -64,7 +77,7 @@ class Screen(TABLE.Table):
         :param word: str
         :param text_size: int
         :param font_color: str
-        :param text_position: Tuple
+        :param text_position: tuple[int, int]
         :return: none
         """
         font = pygame.font.SysFont("notosanscjkk", text_size)
@@ -85,7 +98,7 @@ class Screen(TABLE.Table):
         :param cell_size: int
         :param cell_color: str
         :param cell_border: int
-        :param start_position: tuple
+        :param start_position: tuple[int, int]
         :return: none
         """
         for i in range(self.table_size[0]):
@@ -111,6 +124,9 @@ if __name__ == '__main__':
     a = Screen((1000, 1000), t, (4, 4))
 
     while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
         a.ShowScreen('white')
         a.ShowTable(150, 'black', 3, (100, 100))
         # a.ShowText("Hi There", 90, 'black', (20, 20))

@@ -2,6 +2,7 @@ class Table:
     """
     Class for Table
     """
+
     def __init__(self, table, table_size):
         """
         Basic Information
