@@ -27,6 +27,20 @@ direction = {pygame.K_UP: 'up', pygame.K_DOWN: 'down', pygame.K_LEFT: 'left', py
 key_l = [alphabet, number, command, direction]
 
 
+class Interaction(TABLE.Table):
+    def __init__(self, event, table, table_size):
+        super().__init__(table, table_size)
+        self.event = event
+
+    def MouseClick(self, mouse_position, table_position, table_length, table_size, table_border):
+        for i in table_size[0]:
+            for j in table_size[1]:
+                adjust_position = (table_position[0] + j*table_length - j*table_border,
+                                   table_position[1] + i*table_length - i*table_border)
+                if 0 < mouse_position[0] - adjust_position[0] < table_length and 0 < mouse_position[1] - adjust_position[1] < table_length:
+                    self.table[i][j] = 1
+
+
 class Screen(TABLE.Table):
     """
     Responsibility on Displaying Screen
@@ -65,19 +79,19 @@ class Screen(TABLE.Table):
         """
         self.screen.fill(color[screen_color])
 
-    def ShowTable(self, cell_size, cell_color, cell_border, position):
+    def ShowTable(self, cell_size, cell_color, cell_border, start_position):
         """
         Function to Show Table
         :param cell_size: int
         :param cell_color: str
         :param cell_border: int
-        :param position: tuple
+        :param start_position: tuple
         :return: none
         """
         for i in range(self.table_size[0]):
             for j in range(self.table_size[1]):
-                adjust_position = (position[0] + j * cell_size - cell_border * j,
-                                   position[1] + i * cell_size - cell_border * i)
+                adjust_position = (start_position[0] + j * cell_size - cell_border * j,
+                                   start_position[1] + i * cell_size - cell_border * i)
                 pygame.draw.rect(self.screen, color[cell_color],
                                  (adjust_position[0],
                                   adjust_position[1],
@@ -90,11 +104,11 @@ class Screen(TABLE.Table):
 
 
 if __name__ == '__main__':
-    t = [[0, 0],
-         [0, 0],
-         [0, 0],
-         [0, 0]]
-    a = Screen((1000, 1000), t, (4, 2))
+    t = [[0, 0, 0, 0],
+         [0, 0, 0, 0],
+         [0, 0, 0, 0],
+         [0, 0, 0, 0]]
+    a = Screen((1000, 1000), t, (4, 4))
 
     while True:
         a.ShowScreen('white')
