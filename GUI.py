@@ -56,8 +56,9 @@ class Screen:
         self.screen.fill(Color.color['white'])
 
 
-a = Screen((300, 300))
+if __name__ == '__main__':
+    a = Screen((300, 300))
 
-while True:
-    a.ShowScreen()
-    a.ShowText("Hi There", 90, Color.color['black'], (20, 20))
+    while True:
+        a.ShowScreen()
+        a.ShowText("Hi There", 90, Color.color['black'], (20, 20))
