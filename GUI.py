@@ -29,7 +29,7 @@ key_l = [alphabet, number, command, direction]
 
 class Screen(TABLE.Table):
     """
-    Responsibility on Showing Screen
+    Responsibility on Displaying Screen
     """
 
     def __init__(self, screen_size, table, table_size):
@@ -46,7 +46,7 @@ class Screen(TABLE.Table):
 
     def ShowText(self, word, text_size, font_color, text_position):
         """
-        Function to show text on screen
+        Function to Show Text on Screen
         :param word: str
         :param text_size: int
         :param font_color: str
@@ -58,9 +58,22 @@ class Screen(TABLE.Table):
         self.screen.blit(word, text_position)
 
     def ShowScreen(self, screen_color):
+        """
+        Function to Show Screen
+        :param screen_color: str
+        :return: none
+        """
         self.screen.fill(color[screen_color])
 
     def ShowTable(self, cell_size, cell_color, cell_border, position):
+        """
+        Function to Show Table
+        :param cell_size: int
+        :param cell_color: str
+        :param cell_border: int
+        :param position: tuple
+        :return: none
+        """
         for i in range(self.table_size[0]):
             for j in range(self.table_size[1]):
                 adjust_position = (position[0] + j * cell_size - cell_border * j,
