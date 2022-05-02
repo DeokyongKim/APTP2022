@@ -31,9 +31,9 @@ class Interaction(TABLE.Table):
     """
     Responsibility on Interaction with User
     """
-    def __init__(self, input_event, table, table_size):
+    def __init__(self, input_events, table, table_size):
         super().__init__(table, table_size)
-        self.input_event = input_event
+        self.input_events = input_events
 
     def MouseClick(self, mouse_position, table_position, table_length, table_border):
         for i in self.table_size[0]:
@@ -45,12 +45,16 @@ class Interaction(TABLE.Table):
                     self.table[i][j] = 1
 
     def KeyboardPressed(self):
-        for i in key_l:
-            if self.input_event in i:
-                return i[self.input_event]
+        for single_event in self.input_events:
+            self.IsEnd(single_event)
+            if single_event.type() == pygame.KEYDOWN:
+                for i in key_l:
+                    if single_event.key in i:
+                        return i[self.input_events]
 
-    def IsEnd(self):
-        if self.input_event.type() == pygame.QUIT:
+    @staticmethod
+    def IsEnd(end_event):
+        if end_event == pygame.QUIT:
             sys.exit()
 
 
@@ -114,6 +118,10 @@ class Screen(TABLE.Table):
                 self.ShowText(self.table[i][j], cell_size, cell_color,
                               (adjust_position[0] + cell_size/3,
                                adjust_position[1] + cell_size/6))
+
+
+class FinalScene(Interaction, Screen):
+    pass
 
 
 if __name__ == '__main__':
