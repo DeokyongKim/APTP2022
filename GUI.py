@@ -63,11 +63,11 @@ class Screen(TABLE.Table):
     Responsibility on Displaying Screen
     """
 
-    def __init__(self, screen_size: tuple[int, int], table: list[int], table_size: tuple[int, int]):
+    def __init__(self, screen_size: tuple[int, int], table: list[list[int]], table_size: tuple[int, int]):
         """
         Screen Information
         :param screen_size: tuple[int, int]
-        :param table: list[int]
+        :param table: list[list[int]]
         :param table_size: tuple[int, int]
         """
         super().__init__(table, table_size)
