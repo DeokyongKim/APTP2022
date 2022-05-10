@@ -35,7 +35,15 @@ class Interaction(TABLE.Table):
         super().__init__(table, table_size)
         self.input_events = input_events
 
-    def MouseClick(self, mouse_position, table_position, table_length, table_border):
+    def MouseClick(self, mouse_position: tuple[int, int], table_position, table_length: int, table_border: int):
+        """
+        click
+        :param mouse_position:
+        :param table_position:
+        :param table_length:
+        :param table_border:
+        :return:
+        """
         for i in self.table_size[0]:
             for j in self.table_size[1]:
                 adjust_position = (table_position[0] + j*table_length - j*table_border,
@@ -119,6 +127,23 @@ class Screen(TABLE.Table):
                               (adjust_position[0] + cell_size/3,
                                adjust_position[1] + cell_size/6))
 
+    def ShowDecisionPage(self, cell_size, cell_color, cell_border, start_position):
+        for i in range(5):
+            adjust_position = (start_position[0] + i * cell_size - cell_border * i - 5*cell_size/2,
+                               start_position[1] - cell_size)
+            pygame.draw.rect(self.screen, color[cell_color],
+                             (adjust_position[0],
+                              adjust_position[1],
+                              cell_size,
+                              cell_size),
+                             cell_border)
+            self.ShowText(i, cell_size, cell_color,
+                          (adjust_position[0] + cell_size/3,
+                           adjust_position[1] + cell_size/6))
+        self.ShowText('Choose number of inputs', int(cell_size/2), cell_color,
+                      (start_position[0] / 3,
+                       start_position[1]/3))
+
 
 class FinalScene(Interaction, Screen):
     pass
@@ -136,6 +161,7 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                 sys.exit()
         a.ShowScreen('white')
-        a.ShowTable(150, 'black', 3, (100, 100))
+        a.ShowDecisionPage(150, 'black', 3, (a.screen_size[0] / 2, a.screen_size[1]/2))
+        # a.ShowTable(150, 'black', 3, (100, 100))
         # a.ShowText("Hi There", 90, 'black', (20, 20))
         pygame.display.flip()
