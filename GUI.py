@@ -144,6 +144,8 @@ class Screen(TABLE.Table):
                       (start_position[0] / 3,
                        start_position[1]/3))
 
+    def GetDecisionPage(self):
+        pass
 
 class FinalScene(Interaction, Screen):
     pass
