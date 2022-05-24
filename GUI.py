@@ -67,15 +67,16 @@ class Screen(TABLE.Table):
         """
         self.screen.fill(color[screen_color])
 
-    def ShowTable(self, cell_color, start_position):
+    def ShowTable(self, cell_color):
         """
         Function to Show Table
-        :param cell_size: int
         :param cell_color: str
-        :param cell_border: int
-        :param start_position: tuple[int, int]
         :return: none
         """
+        # print('table screen')
+        start_position = (self.screen_size[0]/2 - self.table_size[1]*self.cell_size/2.0,
+                          self.screen_size[1]/2 - self.table_size[0]*self.cell_size/2.0 - self.cell_size/2)
+
         for i in range(self.table_size[0]):
             for j in range(self.table_size[1]):
                 adjust_position = (start_position[0] + j * self.cell_size - self.cell_border * j,
@@ -91,8 +92,9 @@ class Screen(TABLE.Table):
                                adjust_position[1] + self.cell_size/6))
 
     def ShowDecisionPage(self, cell_color, start_position):
-        for i in range(5):
-            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 5*self.cell_size/2,
+        # print('decision page')
+        for i in range(1, 5):
+            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 6*self.cell_size/2,
                                start_position[1] - self.cell_size)
             pygame.draw.rect(self.screen, color[cell_color],
                              (adjust_position[0],
@@ -100,7 +102,7 @@ class Screen(TABLE.Table):
                               self.cell_size,
                               self.cell_size),
                              self.cell_border)
-            self.ShowText(i, self.cell_size, cell_color,
+            self.ShowText(i + 1, self.cell_size, cell_color,
                           (adjust_position[0] + self.cell_size/3,
                            adjust_position[1] + self.cell_size/6))
         self.ShowText('Choose number of inputs', int(self.cell_size/2), cell_color,
@@ -116,9 +118,9 @@ if __name__ == '__main__':
     a = Screen((1000, 1000), t, (4, 4), 150, 3)
 
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        # for event in pygame.event.get():
+        #     if event.type == pygame.QUIT:
+        #         sys.exit()
         a.ShowScreen('white')
         a.ShowDecisionPage('black', (a.screen_size[0] / 2, a.screen_size[1]/2))
 
