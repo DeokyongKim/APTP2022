@@ -184,6 +184,8 @@ class Game:
 
 # 계정 생성 또는 로그인을 하는 부분
 
+
+"""
 printLine()
 while True:
     print("계정을 생성하거나, 로그인을 진행 해주세요.")
@@ -206,3 +208,14 @@ Block.showBlock()
 printLine()
 while (Game.isWinner() != True):
     for i in range(0, 3):
+"""
+
+# 이정현 정상출력 확인 부분
+temp = Block()
+temp.makeToDistribute()
+temp.giveBlock()
+print(temp.blockLine_0)
+print(temp.blockLine_1)
+print(temp.blockLine_2)
+print(temp.blockLine_3)
+print(temp.blockLeft)
