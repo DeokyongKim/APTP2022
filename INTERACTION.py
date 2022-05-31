@@ -118,10 +118,18 @@ if __name__ == '__main__':
                         a.table_size = (4, 4)
                     if decision == 5:
                         a.table = [
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0]
+                            [
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0]
+                            ],
+                            [
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0]
+                            ]
                         ]
                         a.table_size = (4, 4)
                     screen_type = 'done'
@@ -134,7 +142,6 @@ if __name__ == '__main__':
                 if back_event.type == pygame.MOUSEBUTTONDOWN:
                     (mx, my) = pygame.mouse.get_pos()
                     if 30 < mx < 30 + 150 / 2 and 30 < my < 30 + 150 / 2:
-                        print('in')
                         screen_type = 'decide'
                         decision = None
 
