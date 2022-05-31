@@ -30,9 +30,16 @@ def get_2by2(t):
                         small_ans.append([i, (j+1) % 2])
                     did[i][(j+1) % 2] = 'done'
 
-                ans.append(small_ans)
+                if len(small_ans) & (len(small_ans) - 1) == 0:
+                    ans.append(small_ans)
+                else:
+                    while len(small_ans) & (len(small_ans) - 1) != 0:
+                        index = small_ans.pop()
+                        did[index[0]][index[1]] = 'yet'
+                    if small_ans is not []:
+                        ans.append(small_ans)
 
     return ans
 
 
-print(get_2by2([[1, 0], [1, 0]]))
+print(get_2by2([[1, 1], [1, 0]]))
