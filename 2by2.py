@@ -13,20 +13,26 @@ def get_2by2(t):
                 small_ans = [[i, j]]
 
                 # 상하좌우
-                if t[i - 1][j] == 1:
-                    small_ans.append([i - 1, j])
-                    did[i-1][j] = 'done'
-                if t[i + 1][j] == 1:
-                    small_ans.append([i + 1, j])
-                    did[i+1][j] = 'done'
-                if t[i][j - 1] == 1:
-                    small_ans.append([i, j-1])
-                    did[i][j - 1] = 'done'
-                if t[i][j + 1] == 1:
-                    small_ans.append([i, j+1])
-                    did[i][j + 1] = 'done'
+                if t[(i-1+2) % 2][j] == 1:
+                    if [(i-1+2) % 2, j] not in small_ans:
+                        small_ans.append([(i-1+2) % 2, j])
+                    did[(i-1+2) % 2][j] = 'done'
+                if t[(i+1) % 2][j] == 1:
+                    if [(i+1) % 2, j] not in small_ans:
+                        small_ans.append([(i+1) % 2, j])
+                    did[(i+1) % 2][j] = 'done'
+                if t[i][(j-1+2) % 2] == 1:
+                    if [i, (j-1+2) % 2] not in small_ans:
+                        small_ans.append([i, (j-1+2) % 2])
+                    did[i][(j-1+2) % 2] = 'done'
+                if t[i][(j+1) % 2] == 1:
+                    if [i, (j+1) % 2] not in small_ans:
+                        small_ans.append([i, (j+1) % 2])
+                    did[i][(j+1) % 2] = 'done'
 
                 ans.append(small_ans)
 
     return ans
 
+
+print(get_2by2([[1, 0], [1, 0]]))
