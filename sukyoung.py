@@ -67,6 +67,7 @@ def get_2by2(table):
 
     return ans
 
+
 print(get_2by2([[0,1],
                 [0,1]]))
 
