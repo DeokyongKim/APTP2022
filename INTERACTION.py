@@ -25,12 +25,24 @@ class Interaction(Screen):
 
     def GetDecision(self, start_position):
         (mouseX, mouseY) = pygame.mouse.get_pos()
-        for i in range(5):
-            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 5 * self.cell_size / 2,
+        for i in range(1, 5):
+            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 6 * self.cell_size / 2,
                                start_position[1] - self.cell_size)
             if 0 < mouseX - adjust_position[0] < self.cell_size and 0 < mouseY - adjust_position[1] < self.cell_size:
                 return i + 1
         return -1
+
+    def GetInput(self, start_position):
+        (mouseX, mouseY) = pygame.mouse.get_pos()
+        for i in range(self.table_size[0]):
+            for j in range(self.table_size[1]):
+                adjust_position = (start_position[0] + j * self.cell_size - self.cell_border * j,
+                                   start_position[1] + i * self.cell_size - self.cell_border * i + self.cell_size/2)
+                if 0 < mouseX - adjust_position[0] < self.cell_size and 0 < mouseY - adjust_position[1] < self.cell_size:
+                    if self.table[i][j] == 1:
+                        self.table[i][j] = 0
+                    elif self.table[i][j] == 0:
+                        self.table[i][j] = 1
 
     def IsEvent(self, mode, start_position, event_list):
         # print('get event')
@@ -39,7 +51,7 @@ class Interaction(Screen):
                 if mode == 'number':
                     return self.GetDecision(start_position)
                 if mode == 'table':
-                    print('doing')
+                    self.GetInput(start_position)
                 #     return self.MouseClick(start_position)
 
     def BackButton(self, sc_type):
@@ -64,7 +76,7 @@ if __name__ == '__main__':
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
-    a = Interaction((1000, 1000), t, (4, 4), 150, 3)
+    a = Interaction((800, 800), t, (4, 4), 130, 3)
     screen_type = 'decide'
 
     while True:
@@ -125,9 +137,8 @@ if __name__ == '__main__':
                         print('in')
                         screen_type = 'decide'
                         decision = None
+
+            a.IsEvent('table', stp, el)
             a.ShowTable('black')
 
-        # a.ShowTable(150, 'black', 3, (100, 100))
-        # a.ShowText("Hi There", 90, 'black', (20, 20))
-        pygame.event.pump()
         pygame.display.flip()

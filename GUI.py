@@ -75,7 +75,7 @@ class Screen(TABLE.Table):
         """
         # print('table screen')
         start_position = (self.screen_size[0]/2 - self.table_size[1]*self.cell_size/2.0,
-                          self.screen_size[1]/2 - self.table_size[0]*self.cell_size/2.0 - self.cell_size/2)
+                          self.screen_size[1]/2 - self.table_size[0]*self.cell_size/2.0)
 
         for i in range(self.table_size[0]):
             for j in range(self.table_size[1]):
