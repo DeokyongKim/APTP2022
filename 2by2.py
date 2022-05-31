@@ -42,4 +42,4 @@ def get_2by2(t):
     return ans
 
 
-print(get_2by2([[1, 1], [1, 0]]))
+print(get_2by2([[1, 1], [1, 1]]))
