@@ -59,7 +59,7 @@ def get_2by2(table):
 
     elif table == [[1, 1],
                    [1, 0]]:
-        ans = [[[0, 0], [0, 1]], [[0, 0], [0, 1]]]
+        ans = [[[0, 0], [0, 1]], [[0, 0], [1, 0]]]
 
     elif table == [[1, 1],
                    [1, 1]]:
@@ -68,7 +68,7 @@ def get_2by2(table):
     return ans
 
 
-print(get_2by2([[0,1],
-                [0,1]]))
+print(get_2by2([[0,0],
+                [0,0]]))
 
 
