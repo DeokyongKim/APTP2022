@@ -7,7 +7,7 @@ def get_2by2(table):
 
     elif table == [[0, 0],
                    [0, 1]]:
-        ans = [[table[1][1]]]
+        ans = [[[1, 1]]]
 
     elif table == [[0, 0],
                    [1, 0]]:
