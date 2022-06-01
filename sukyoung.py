@@ -1,3 +1,6 @@
+# Wrong implement
+# I just make my mind to GIVE UP with 2 by 2 problem
+
 def get_2by2(table):
     ans = []
 
