@@ -285,10 +285,10 @@ while True:
                 # print('--==-=-=-=-=-=123123123123123123123')
                 print(all_pi)
 
-                i = 0
-                for answers in all_pi:
-                    a.ShowText(answers, 50, 'black', (100, 150 + 50 * i))
-                    i += 1
+                # i = 0
+                # for answers in all_pi:
+                #     a.ShowText(answers, 50, 'black', (100, 150 + 50 * i))
+                #     i += 1
 
                 # print('329875904238720398534523452849357092435')
 

@@ -82,88 +82,87 @@ class Interaction(Screen):
         return False
 
 
-if __name__ == '__main__':
-    t = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
-    ]
-    a = Interaction((800, 800), t, (4, 4), 130, 3)
-    screen_type = 'decide'
-
-    while True:
-        el = pygame.event.get()
-
-        for end_event in el:
-            if end_event.type == pygame.QUIT:
-                print('program ended')
-                sys.exit()
-        a.ShowScreen('white')
-
-        if screen_type == 'decide':
-            a.ShowDecisionPage('black', (a.screen_size[0] / 2, a.screen_size[1] / 2))
-            decision = a.IsEvent('number', (a.screen_size[0] / 2, a.screen_size[1] / 2), el)
-            if decision is not None:
-                print(decision)
-                if decision != -1:
-                    if decision == 2:
-                        a.table = [
-                            [0, 0],
-                            [0, 0]
-                        ]
-                        a.table_size = (2, 2)
-                    if decision == 3:
-                        a.table = [
-                            [0, 0],
-                            [0, 0],
-                            [0, 0],
-                            [0, 0]
-                        ]
-                        a.table_size = (4, 2)
-                    if decision == 4:
-                        a.table = [
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0],
-                            [0, 0, 0, 0]
-                        ]
-                        a.table_size = (4, 4)
-                    if decision == 5:
-                        a.table = [
-                            [
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0]
-                            ],
-                            [
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0],
-                                [0, 0, 0, 0]
-                            ]
-                        ]
-                        a.table_size = (4, 4)
-                    screen_type = 'done'
-        elif screen_type == 'done':
-            a.BackButton()
-            input_done = a.AnswerButton(el)
-            if input_done:
-                # TODO: SHOW ANSWER
-                pass
-
-            stp = (a.screen_size[0] / 2 - a.table_size[1] * a.cell_size / 2.0,
-                   a.screen_size[1] / 2 - a.table_size[0] * a.cell_size / 2.0 - a.cell_size / 2)
-
-            for back_event in el:
-                if back_event.type == pygame.MOUSEBUTTONDOWN:
-                    (mx, my) = pygame.mouse.get_pos()
-                    if 30 < mx < 30 + 150 / 2 and 30 < my < 30 + 150 / 2:
-                        screen_type = 'decide'
-                        decision = None
-
-            a.IsEvent('table', stp, el)
-            a.ShowTable('black')
-
-        pygame.display.flip()
+# if __name__ == '__main__':
+#     t = [
+#         [0, 0, 0, 0],
+#         [0, 0, 0, 0],
+#         [0, 0, 0, 0],
+#         [0, 0, 0, 0]
+#     ]
+#     a = Interaction((800, 800), t, (4, 4), 130, 3)
+#     screen_type = 'decide'
+#
+#     while True:
+#         el = pygame.event.get()
+#
+#         for end_event in el:
+#             if end_event.type == pygame.QUIT:
+#                 print('program ended')
+#                 sys.exit()
+#         a.ShowScreen('white')
+#
+#         if screen_type == 'decide':
+#             a.ShowDecisionPage('black', (a.screen_size[0] / 2, a.screen_size[1] / 2))
+#             decision = a.IsEvent('number', (a.screen_size[0] / 2, a.screen_size[1] / 2), el)
+#             if decision is not None:
+#                 print(decision)
+#                 if decision != -1:
+#                     if decision == 2:
+#                         a.table = [
+#                             [0, 0],
+#                             [0, 0]
+#                         ]
+#                         a.table_size = (2, 2)
+#                     if decision == 3:
+#                         a.table = [
+#                             [0, 0],
+#                             [0, 0],
+#                             [0, 0],
+#                             [0, 0]
+#                         ]
+#                         a.table_size = (4, 2)
+#                     if decision == 4:
+#                         a.table = [
+#                             [0, 0, 0, 0],
+#                             [0, 0, 0, 0],
+#                             [0, 0, 0, 0],
+#                             [0, 0, 0, 0]
+#                         ]
+#                         a.table_size = (4, 4)
+#                     if decision == 5:
+#                         a.table = [
+#                             [
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0]
+#                             ],
+#                             [
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0],
+#                                 [0, 0, 0, 0]
+#                             ]
+#                         ]
+#                         a.table_size = (4, 4)
+#                     screen_type = 'done'
+#         elif screen_type == 'done':
+#             a.BackButton()
+#             input_done = a.AnswerButton(el)
+#             if input_done:
+#                 pass
+#
+#             stp = (a.screen_size[0] / 2 - a.table_size[1] * a.cell_size / 2.0,
+#                    a.screen_size[1] / 2 - a.table_size[0] * a.cell_size / 2.0 - a.cell_size / 2)
+#
+#             for back_event in el:
+#                 if back_event.type == pygame.MOUSEBUTTONDOWN:
+#                     (mx, my) = pygame.mouse.get_pos()
+#                     if 30 < mx < 30 + 150 / 2 and 30 < my < 30 + 150 / 2:
+#                         screen_type = 'decide'
+#                         decision = None
+#
+#             a.IsEvent('table', stp, el)
+#             a.ShowTable('black')
+#
+#         pygame.display.flip()
