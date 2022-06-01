@@ -93,8 +93,8 @@ class Screen(TABLE.Table):
 
     def ShowDecisionPage(self, cell_color, start_position):
         # print('decision page')
-        for i in range(1, 5):
-            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 6*self.cell_size/2,
+        for i in range(1, 4):
+            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 5*self.cell_size/2,
                                start_position[1] - self.cell_size)
             pygame.draw.rect(self.screen, color[cell_color],
                              (adjust_position[0],

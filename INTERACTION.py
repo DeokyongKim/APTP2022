@@ -1,10 +1,6 @@
 from GUI import Screen, pygame, sys, color
 
 
-# import pygame
-# import sys
-
-
 class Interaction(Screen):
     """
     Responsibility on Interaction with User
@@ -25,8 +21,8 @@ class Interaction(Screen):
 
     def GetDecision(self, start_position):
         (mouseX, mouseY) = pygame.mouse.get_pos()
-        for i in range(1, 5):
-            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 6 * self.cell_size / 2,
+        for i in range(1, 4):
+            adjust_position = (start_position[0] + i * self.cell_size - self.cell_border * i - 5 * self.cell_size / 2,
                                start_position[1] - self.cell_size)
             if 0 < mouseX - adjust_position[0] < self.cell_size and 0 < mouseY - adjust_position[1] < self.cell_size:
                 return i + 1
@@ -54,7 +50,7 @@ class Interaction(Screen):
                     self.GetInput(start_position)
                 #     return self.MouseClick(start_position)
 
-    def BackButton(self, sc_type):
+    def BackButton(self):
         # print('show back button')
         pygame.draw.rect(self.screen, color['black'],
                          (30,
@@ -67,6 +63,23 @@ class Interaction(Screen):
                              (30 + self.cell_size / 2 - 10, 30 + 10),
                              (30 + self.cell_size / 2 - 10, 30 + self.cell_size / 2 - 10)
                              ))
+
+    def AnswerButton(self, event_list_ans):
+        pygame.draw.rect(self.screen, color['black'],
+                         (self.screen_size[0] - 230,
+                          self.screen_size[1] - 100,
+                          190,
+                          60),
+                         self.cell_border)
+        self.ShowText("Answer", 60, 'black', (self.screen_size[0] - 230 + 10, self.screen_size[1] - 100 + 10))
+
+        for ans_event in event_list_ans:
+            if ans_event.type == pygame.MOUSEBUTTONDOWN:
+                (mouseX, mouseY) = pygame.mouse.get_pos()
+                if 0 < mouseX - (self.screen_size[0] - 230) < 190 and 0 < mouseY - (self.screen_size[1] - 100) < 60:
+                    return True
+
+        return False
 
 
 if __name__ == '__main__':
@@ -134,7 +147,12 @@ if __name__ == '__main__':
                         a.table_size = (4, 4)
                     screen_type = 'done'
         elif screen_type == 'done':
-            a.BackButton(screen_type)
+            a.BackButton()
+            input_done = a.AnswerButton(el)
+            if input_done:
+                # TODO: SHOW ANSWER
+                pass
+
             stp = (a.screen_size[0] / 2 - a.table_size[1] * a.cell_size / 2.0,
                    a.screen_size[1] / 2 - a.table_size[0] * a.cell_size / 2.0 - a.cell_size / 2)
 
